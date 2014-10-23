@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoManagement", "auto-management\AutoManagement.csproj", "{072FE93D-203B-4ACA-83A6-2357ADB6FBAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{81EFD4D2-14BB-4848-A6E1-852EB15FA232}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "test\DataAccess.csproj", "{EE034A75-037B-41C0-A2AF-ECB53F6ECAFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{072FE93D-203B-4ACA-83A6-2357ADB6FBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{072FE93D-203B-4ACA-83A6-2357ADB6FBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{072FE93D-203B-4ACA-83A6-2357ADB6FBAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81EFD4D2-14BB-4848-A6E1-852EB15FA232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81EFD4D2-14BB-4848-A6E1-852EB15FA232}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81EFD4D2-14BB-4848-A6E1-852EB15FA232}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81EFD4D2-14BB-4848-A6E1-852EB15FA232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE034A75-037B-41C0-A2AF-ECB53F6ECAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE034A75-037B-41C0-A2AF-ECB53F6ECAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE034A75-037B-41C0-A2AF-ECB53F6ECAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE034A75-037B-41C0-A2AF-ECB53F6ECAFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
