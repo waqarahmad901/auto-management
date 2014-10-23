@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoManagement", "auto-management\AutoManagement.csproj", "{072FE93D-203B-4ACA-83A6-2357ADB6FBAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "test\DataAccess.csproj", "{EE034A75-037B-41C0-A2AF-ECB53F6ECAFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{EE034A75-037B-41C0-A2AF-ECB53F6ECAFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
