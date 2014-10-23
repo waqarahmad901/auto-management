@@ -4,20 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AutoManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="AutoManagementModelStoreContainer" />
+      <Schema Namespace="db5ed057d53dd24b4487bca3cd0118f1c3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="db5ed057d53dd24b4487bca3cd0118f1c3ModelStoreContainer" />
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AutoManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="db5ed057d53dd24b4487bca3cd0118f1c3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="AutoManagement" annotation:LazyLoadingEnabled="true" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AutoManagementModelStoreContainer" CdmEntityContainer="AutoManagement" />
+        <EntityContainerMapping StorageEntityContainer="db5ed057d53dd24b4487bca3cd0118f1c3ModelStoreContainer" CdmEntityContainer="AutoManagement" />
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
