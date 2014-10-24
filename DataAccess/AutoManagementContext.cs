@@ -17,7 +17,7 @@ namespace DataAccess
         public void AddStudent(Student st)
         {
             context.Students.Add(st);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
     }
 }
