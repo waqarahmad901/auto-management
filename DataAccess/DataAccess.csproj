@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -47,42 +48,48 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoManagement.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>AutoManagement.Context.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="AutoManagement.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>AutoManagement.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="AutoManagement.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>AutoManagement.edmx</DependentUpon>
     </Compile>
+    <Compile Include="AutoManagementContext.cs" />
+    <Compile Include="IAutoManagementContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs">
+      <DependentUpon>AutoManagement.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AutoManagement.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AutoManagement.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
     <None Include="AutoManagement.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AutoManagement.edmx</DependentUpon>
       <LastGenOutput>AutoManagement.Context.cs</LastGenOutput>
+      <DependentUpon>AutoManagement.edmx</DependentUpon>
     </None>
     <None Include="AutoManagement.edmx.diagram">
       <DependentUpon>AutoManagement.edmx</DependentUpon>
     </None>
     <None Include="AutoManagement.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AutoManagement.edmx</DependentUpon>
       <LastGenOutput>AutoManagement.cs</LastGenOutput>
+      <DependentUpon>AutoManagement.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
