@@ -6,14 +6,14 @@
             var html = "";
             $.each(data, function (i, control) {
                 html += "<div class=\"form-group\">";
-                html += "<label title=\"" + control.label + " \" class=\"col-sm-2 control-label\">" + control.label + "</label>"
-                html += "<div class=\"col-sm-10\">";
+                html += "<label title=\"" + control.label + " \" class=\"col-sm-3 control-label\">" + control.label + "</label>"
+                html += "<div class=\"col-sm-9\">";
                 switch (control.type) {
                     case "textbox":
-                        html += "<input type=\"text\" id=\"" + control.name + "\"  ng-model=\"" + control.name + "\" class=\"form-control\" />"
+                        html += "<input type=\"text\" id=\"" + control.name + "\"  ng-model=\"entity." + control.name + "\" class=\"form-control\" />"
                         break;
                     case "dropdown":
-                        html += "<select  id=\"" + control.name + "\"  ng-model=\"" + control.name + "\" class=\"form-control\" >";
+                        html += "<select  id=\"" + control.name + "\"  ng-model=\"entity." + control.name + "\" class=\"form-control\" >";
                         for (di = 0; di < control.values.length; di++) {
                             html += "<option value=\"" + control.values[di] + "\">" + control.values[di] + "</option>"
                         }
@@ -21,12 +21,12 @@
                         break;
                     case "radio":
                         for (di = 0; di < control.values.length; di++) {
-                            html += "<input type=\"radio\" name=\"" + control.name + "\"  ng-model=\"" + control.name + "\" value=\"" + control.values[di] + "\">" + control.values[di] ;
+                            html += "<input type=\"radio\" name=\"" + control.name + "\"  ng-model=\"entity." + control.name + "\" value=\"" + control.values[di] + "\">" + control.values[di];
                         }
                         break;
                     case "checkbox":
                         for (di = 0; di < control.values.length; di++) {
-                            html += "<input type=\"checkbox\" name=\"" + control.name + "\"  ng-model=\"" + control.name + "\" value=\"" + control.values[di] + "\">" + control.values[di];
+                            html += "<input type=\"checkbox\" name=\"" + control.name + "\"  ng-model=\"entity." + control.name + "\" value=\"" + control.values[di] + "\">" + control.values[di];
                         }
                         break;
 

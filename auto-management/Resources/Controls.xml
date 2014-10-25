@@ -2,14 +2,26 @@
 <controls>
   <input>
     <type>textbox</type>
-    <name>txtAbc</name>
+    <name>txtFirstName</name>
     <label>First Name</label>
     <values></values>
   </input>
   <input>
     <type>textbox</type>
-    <name>txtAbc</name>
+    <name>txtLastName</name>
     <label>Last Name</label>
+    <values></values>
+  </input>
+  <input>
+    <type>textbox</type>
+    <name>txtEmail</name>
+    <label>Email Address</label>
+    <values></values>
+  </input>
+  <input>
+    <type>textbox</type>
+    <name>txtPhoneNumber</name>
+    <label>Phone Number</label>
     <values></values>
   </input>
   <input>
