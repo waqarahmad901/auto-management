@@ -2,28 +2,16 @@
     ViewBag.Title = "Play";
 }
 
-<div id="bodyContainer" ng-app="AutoApp">
-    <div ng-controller="StudentController">
+<div id="bodyContainer" >
+    <div ng-controller="ResourceController">
         <div>{{Error}}</div>
         <div class="row">
             <div class="col-sm-8 form-horizontal">
-                <div class="form-group" ng-repeat="student in students">
-                    <label title="Name" class="col-sm-2 control-label">Name: </label>
-
-                    <div class="col-sm-10">
-                        <label title="{{student.name}}" class="control-label">{{student.name}}</label>
-                    </div>
-                </div>
-                <div class="form-group">
-
-                    <label title="Enter Name : " class="col-sm-2 control-label">Enter Name: </label>
-                    <div class="col-sm-10">
-                        <input type="text" ng-model="student.name" class="form-control" />
-                    </div>
-                </div>
+                <div style="margin-top:10px"></div>
+                <div class="html"></div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <input type="button" value="Save" ng-click="saveStudent(student)"/>
+                        <input type="button" value="Save" ng-click="saveStudent(student)" />
                     </div>
                 </div>
             </div>
