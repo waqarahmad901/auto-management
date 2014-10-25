@@ -5,36 +5,29 @@
 <div id="bodyContainer" ng-app="AutoApp">
     <div ng-controller="StudentController">
         <div>{{Error}}</div>
-        <div class="row" ng-repeat="student in students">
-
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label title="Name" class="col-md-2 control-label">Name: </label>
-                    </div>
-                    <div class="col-md-10">
-                        <label title="{{student.name}}" class="col-md-2 control-label">{{student.name}}</label>
-                    </div>
-                </div>
-            </div>
-        
         <div class="row">
-            <div class="col-md-8">
-                
-                <div class="col-md-10">
-                    <input type="text" ng-model="student.name" class="col-md-8 form-control" />
+            <div class="col-sm-8 form-horizontal">
+                <div class="form-group" ng-repeat="student in students">
+                    <label title="Name" class="col-sm-2 control-label">Name: </label>
+
+                    <div class="col-sm-10">
+                        <label title="{{student.name}}" class="control-label">{{student.name}}</label>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <button ng-click="saveStudent(student)">Save</button>
+                <div class="form-group">
+
+                    <label title="Enter Name : " class="col-sm-2 control-label">Enter Name: </label>
+                    <div class="col-sm-10">
+                        <input type="text" ng-model="student.name" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="button" value="Save" ng-click="saveStudent(student)"/>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
-@section scripts {
-    @Scripts.Render("~/Scripts/angular.js")
-    @Scripts.Render("~/Scripts/app/studentController.js")
-}

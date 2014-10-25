@@ -21,13 +21,12 @@ namespace auto_management.Controllers
             this.context = cont;
         }
 
-       
-        public async Task<IHttpActionResult> Get()
+
+        public IHttpActionResult Get()
         {
-            var user = await Task.Run(() =>
-                {
-                    return context.GetStudents();
-                });
+
+            var user = context.GetStudents();
+
             return this.Ok(user);
         }
         [HttpPost]
