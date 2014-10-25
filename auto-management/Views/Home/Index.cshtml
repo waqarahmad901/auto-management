@@ -5,8 +5,8 @@
 <div id="bodyContainer" ng-app="AutoApp">
     <div ng-controller="StudentController">
         <div>{{Error}}</div>
-        <div ng-repeat="student in students">
-            <div class="row">
+        <div class="row" ng-repeat="student in students">
+
                 <div class="col-md-8">
                     <div class="form-group">
                         <label title="Name" class="col-md-2 control-label">Name: </label>
@@ -16,7 +16,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         
         <div class="row">
             <div class="col-md-8">
