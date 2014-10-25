@@ -1,5 +1,5 @@
 ﻿angular.module('AutoApp', [])
-    .controller('StudentController', function ($scope, $http) {
+    .controller('StudentController',['$scope', '$http', function ($scope, $http) {
         $http.get("/api/Student").success(function (data, status, headers, config) {
             $scope.students = data;
         }).error(function (data, status, headers, config) {
@@ -19,4 +19,4 @@
                
             });
         };
-    }); 
+    }]); 
