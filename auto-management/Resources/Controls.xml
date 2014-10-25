@@ -28,18 +28,18 @@
     <type>radio</type>
     <name>rdAbc</name>
     <label>Gender</label>
-    <values>Male,Female</values>
+    <values>Male,Female,Other</values>
   </input>
   <input>
     <type>dropdown</type>
     <name>drpAbc</name>
     <label>Age</label>
-    <values>Select, 40,50,60</values>
+    <values>Select,40,50,60</values>
   </input>
   <input>
     <type>checkbox</type>
     <name>chkAbc</name>
     <label>Education</label>
-    <values>Bachalor,Master</values>
+    <values>Primary,High,Bachalor,Master</values>
   </input>
 </controls>
