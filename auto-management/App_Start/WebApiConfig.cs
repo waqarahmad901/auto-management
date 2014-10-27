@@ -20,6 +20,11 @@ namespace auto_management
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Routes.MapHttpRoute(
+               name: "GetResourceApi",
+               routeTemplate: "api/{controller}/{formName}/{objectId}",
+               defaults: new { formName = RouteParameter.Optional, objectId = RouteParameter.Optional }
+           );
         }
     }
 }

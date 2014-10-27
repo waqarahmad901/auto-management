@@ -8,8 +8,9 @@ namespace DataAccess
 {
     public interface IAutoManagementContext
     {
-        EntityDefination GetEntityDefination(string entity);
-        Dictionary<Guid?, string> GetEntityListFromEntityDefination(string entity);
+        Dictionary<int, string> GetEntityDefination(string entity);
+        Dictionary<Guid?, string> GetEntityListFromEntityDefination(string entity, Guid objectId);
+        void AddEntites(Dictionary<string, string> entites);
 
 
     }

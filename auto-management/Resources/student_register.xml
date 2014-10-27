@@ -23,14 +23,14 @@
         <id>435d5912-8a61-4f95-b930-ceedf68087df</id>
         <values></values>
       </input>
-      <!--<input>
+     <input>
         <type>textbox</type>
         <name>txtEmail</name>
         <label>Email Address</label>
-        <id></id>
+        <id>7bbd9f55-3571-4cde-8ca0-243bf6204fe9</id>
         <values></values>
       </input>
-      <input>
+       <!--<input>
         <type>textbox</type>
         <name>txtPhoneNumber</name>
         <label>Phone Number</label>

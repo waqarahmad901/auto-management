@@ -22,27 +22,38 @@ namespace auto_management.Controllers
             this.context = cont;
         }
         // GET api/resource
-        public IHttpActionResult Get()
-        {
 
-            var entityList = context.GetEntityListFromEntityDefination("StudentReg");
+        public IHttpActionResult Get(string formName, string objectId)
+        {
+            Dictionary<Guid?,string> entityList = null;
+            if (!string.IsNullOrEmpty(objectId) && objectId != "empty")
+            {
+                entityList = context.GetEntityListFromEntityDefination(formName, Guid.Parse(objectId));
+            }
+            var entityDefination = context.GetEntityDefination(formName);
 
             XmlDocument doc = new XmlDocument();
-            doc.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/Resources/student_register.xml"));
+            doc.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/Resources/" + entityDefination.FirstOrDefault().Value));
             EntityDef entity = new EntityDef();
-            
+
             XmlNodeList controlNodes = doc.DocumentElement.SelectNodes("form/control/input");
 
             XmlNode entityNode = doc.DocumentElement;
             string identityValue = entityNode.SelectSingleNode("identity").InnerText;
-            if (identityValue != "newguid()")
-                entity.FormId = Guid.Parse(identityValue);
-            else
-                entity.FormId = Guid.NewGuid();
-            if (entity.isEdit)
+
+            entity.FormId = Guid.Parse(identityValue);
+
+            if (!string.IsNullOrEmpty(objectId) && objectId != "empty")
+            {
                 entity.Title = entityNode.SelectSingleNode("title/update").InnerText;
+                entity.ObjectId = Guid.Parse(objectId);
+            }
             else
+            {
                 entity.Title = entityNode.SelectSingleNode("title/add").InnerText;
+                entity.ObjectId = Guid.NewGuid();
+            }
+            entity.EntityDefinationId = entityDefination.FirstOrDefault().Key;
 
             List<ControlsModel> controls = new List<ControlsModel>();
 
@@ -55,8 +66,11 @@ namespace auto_management.Controllers
                 control.Name = node.SelectSingleNode("name").InnerText;
                 control.Values = node.SelectSingleNode("values").InnerText.Split(',');
                 control.Id = Guid.Parse(node.SelectSingleNode("id").InnerText);
-                var entityValue = entityList.FirstOrDefault(x=>x.Key == control.Id);
-                control.value = entityValue.Value;
+                if (!string.IsNullOrEmpty(objectId) && objectId != "empty")
+                {
+                    var entityValue = entityList.FirstOrDefault(x => x.Key == control.Id);
+                    control.value = entityValue.Value;
+                }
                 controls.Add(control);
             }
 
@@ -72,11 +86,13 @@ namespace auto_management.Controllers
         }
 
         // POST api/resource
-        public void Post([FromBody] dynamic value)
+        public IHttpActionResult Post([FromBody] dynamic value)
         {
             string response = Convert.ToString(value);
             var jss = new JavaScriptSerializer();
-            var dict = jss.Deserialize<Dictionary<string,string>>(response);
+            var dict = jss.Deserialize<Dictionary<string, string>>(response);
+            context.AddEntites(dict);
+            return this.Ok();
 
         }
 
@@ -97,13 +113,15 @@ namespace auto_management.Controllers
         {
             ControlModelList = new List<ControlsModel>();
         }
+        public int EntityDefinationId { get; set; }
         public bool isEdit { get; set; }
         public string Title { get; set; }
         public Guid FormId { get; set; }
+        public Guid ObjectId { get; set; }
         public List<ControlsModel> ControlModelList { get; set; }
     }
 
-    public class View 
+    public class View
     {
         public string[] Headers { get; set; }
         public Guid[] HeadersIdentity { get; set; }

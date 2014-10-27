@@ -12,6 +12,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EntityDefinationId" Type="int" />
           <Property Name="ObjectId" Type="uniqueidentifier" />
+          <Property Name="FormId" Type="uniqueidentifier" />
           <Property Name="ControlId" Type="uniqueidentifier" />
           <Property Name="Value" Type="nvarchar" MaxLength="3000" />
         </EntityType>
@@ -60,6 +61,7 @@
           <Property Name="ObjectId" Type="Guid" />
           <Property Name="ControlId" Type="Guid" />
           <Property Name="Value" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="FormId" Type="Guid" />
         </EntityType>
         <EntityType Name="EntityDefination">
           <Key>
@@ -86,6 +88,7 @@
           <EntitySetMapping Name="Entities">
             <EntityTypeMapping TypeName="db5ed057d53dd24b4487bca3cd0118f1c3Model.Entity">
               <MappingFragment StoreEntitySet="Entity">
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="ControlId" ColumnName="ControlId" />
                 <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />

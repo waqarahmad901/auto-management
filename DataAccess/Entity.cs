@@ -19,5 +19,6 @@ namespace DataAccess
         public Nullable<System.Guid> ObjectId { get; set; }
         public Nullable<System.Guid> ControlId { get; set; }
         public string Value { get; set; }
+        public Nullable<System.Guid> FormId { get; set; }
     }
 }
