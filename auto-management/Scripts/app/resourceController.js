@@ -1,6 +1,6 @@
 ﻿angular
 .module('myApp', [])
-    .controller('ResourceController',
+    .controller('ResourceController',['$scope', '$http',
         function ($scope, $http) {
             $scope.apiModels = {};
             $scope.apiModels["drpAbc"] = "Select";
@@ -14,5 +14,5 @@
             $scope.saveEntity = function () {
                 alert($scope.apiModels);
             }
-        });
+        }]);
 
