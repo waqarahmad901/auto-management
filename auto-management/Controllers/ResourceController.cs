@@ -1,38 +1,68 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 using System.Xml;
 
 namespace auto_management.Controllers
 {
     public class ResourceController : ApiController
     {
+        private IAutoManagementContext context = null;
+        public ResourceController()
+        {
+            context = new AutoManagementContext();
+        }
+        public ResourceController(IAutoManagementContext cont)
+        {
+            this.context = cont;
+        }
         // GET api/resource
         public IHttpActionResult Get()
         {
-            
-            XmlDocument doc = new XmlDocument();
-            doc.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/Resources/Controls.xml"));
 
-            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/controls/input");
+            var entityList = context.GetEntityListFromEntityDefination("StudentReg");
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/Resources/student_register.xml"));
+            EntityDef entity = new EntityDef();
+            
+            XmlNodeList controlNodes = doc.DocumentElement.SelectNodes("form/control/input");
+
+            XmlNode entityNode = doc.DocumentElement;
+            string identityValue = entityNode.SelectSingleNode("identity").InnerText;
+            if (identityValue != "newguid()")
+                entity.FormId = Guid.Parse(identityValue);
+            else
+                entity.FormId = Guid.NewGuid();
+            if (entity.isEdit)
+                entity.Title = entityNode.SelectSingleNode("title/update").InnerText;
+            else
+                entity.Title = entityNode.SelectSingleNode("title/add").InnerText;
 
             List<ControlsModel> controls = new List<ControlsModel>();
 
-            foreach (XmlNode node in nodes)
+            foreach (XmlNode node in controlNodes)
             {
-                ControlsModel control = new ControlsModel();
 
+                ControlsModel control = new ControlsModel();
                 control.Label = node.SelectSingleNode("label").InnerText;
                 control.Type = node.SelectSingleNode("type").InnerText;
                 control.Name = node.SelectSingleNode("name").InnerText;
                 control.Values = node.SelectSingleNode("values").InnerText.Split(',');
+                control.Id = Guid.Parse(node.SelectSingleNode("id").InnerText);
+                var entityValue = entityList.FirstOrDefault(x=>x.Key == control.Id);
+                control.value = entityValue.Value;
                 controls.Add(control);
             }
-            return this.Ok(controls);
-            
+
+            entity.ControlModelList = controls;
+
+            return this.Ok(entity);
         }
 
         // GET api/resource/5
@@ -42,8 +72,12 @@ namespace auto_management.Controllers
         }
 
         // POST api/resource
-        public void Post([FromBody]string value)
+        public void Post([FromBody] dynamic value)
         {
+            string response = Convert.ToString(value);
+            var jss = new JavaScriptSerializer();
+            var dict = jss.Deserialize<Dictionary<string,string>>(response);
+
         }
 
         // PUT api/resource/5
@@ -57,13 +91,33 @@ namespace auto_management.Controllers
         }
     }
 
+    public class EntityDef
+    {
+        public EntityDef()
+        {
+            ControlModelList = new List<ControlsModel>();
+        }
+        public bool isEdit { get; set; }
+        public string Title { get; set; }
+        public Guid FormId { get; set; }
+        public List<ControlsModel> ControlModelList { get; set; }
+    }
+
+    public class View 
+    {
+        public string[] Headers { get; set; }
+        public Guid[] HeadersIdentity { get; set; }
+    }
+
     public class ControlsModel
     {
         public string Type { get; set; }
         public string Name { get; set; }
         public string Label { get; set; }
         public string[] Values { get; set; }
+        public string value { get; set; }
 
+        public Guid Id { get; set; }
     }
 
 

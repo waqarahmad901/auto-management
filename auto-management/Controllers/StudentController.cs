@@ -25,15 +25,12 @@ namespace auto_management.Controllers
         public IHttpActionResult Get()
         {
 
-            var user = context.GetStudents();
-
-            return this.Ok(user);
+            return null;
         }
         [HttpPost]
         public IHttpActionResult Post(Student stu)
         {
-            context.AddStudent(stu);
-            return this.Ok();
+            return null;
         }
 
     }

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<entity>
+  <entityname>student</entityname>
+  <formtype>registeruser</formtype>
+  <title>
+    <add>Add new student</add>
+    <update>Update student</update>
+  </title>
+  <identity>a4d41cdf-fff8-42bf-8fb2-6b6bd4602e2a</identity>
+  <form>
+    <control>
+      <input>
+        <type>textbox</type>
+        <name>txtFirstName</name>
+        <id>9bc344da-1d01-4437-a9f1-63fa05b476e3</id>
+        <label>First Name</label>
+        <values></values>
+      </input>
+      <input>
+        <type>textbox</type>
+        <name>txtLastName</name>
+        <label>Last Name</label>
+        <id>435d5912-8a61-4f95-b930-ceedf68087df</id>
+        <values></values>
+      </input>
+      <!--<input>
+        <type>textbox</type>
+        <name>txtEmail</name>
+        <label>Email Address</label>
+        <id></id>
+        <values></values>
+      </input>
+      <input>
+        <type>textbox</type>
+        <name>txtPhoneNumber</name>
+        <label>Phone Number</label>
+        <id></id>
+        <values></values>
+      </input>
+      <input>
+        <type>radio</type>
+        <name>rdAbc</name>
+        <label>Gender</label>
+        <id></id>
+        <values>Male,Female,Other</values>
+      </input>
+      <input>
+        <type>dropdown</type>
+        <name>drpAbc</name>
+        <label>Age</label>
+        <id></id>
+        <values>Select,40,50,60</values>
+      </input>
+      <input>
+        <type>checkbox</type>
+        <name>chkAbc</name>
+        <label>Education</label>
+        <id></id>
+        <values>Primary,High,Bachalor,Master</values>
+        <selectedvalues></selectedvalues>
+      </input>-->
+    </control>
+  </form>
+  <view>
+    <header></header>
+    <values></values>
+  </view>
+</entity>

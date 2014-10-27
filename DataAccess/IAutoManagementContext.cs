@@ -8,7 +8,9 @@ namespace DataAccess
 {
     public interface IAutoManagementContext
     {
-        List<Student> GetStudents();
-        void AddStudent(Student st);
+        EntityDefination GetEntityDefination(string entity);
+        Dictionary<Guid?, string> GetEntityListFromEntityDefination(string entity);
+
+
     }
 }

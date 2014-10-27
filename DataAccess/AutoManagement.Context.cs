@@ -26,5 +26,7 @@ namespace DataAccess
         }
     
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Entity> Entities { get; set; }
+        public virtual DbSet<EntityDefination> EntityDefinations { get; set; }
     }
 }

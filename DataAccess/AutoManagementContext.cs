@@ -9,15 +9,24 @@ namespace DataAccess
     public class AutoManagementContext : IAutoManagementContext
     {
         private AutoManagement context = new AutoManagement();
-        public List<Student> GetStudents()
+        public EntityDefination GetEntityDefination(string entity)
         {
-            return context.Students.ToList();
+            return (from en in context.EntityDefinations
+                    where en.Entity == entity
+                    select new EntityDefination { Entity = en.Entity, Entity_XML = en.Entity_XML }).FirstOrDefault();
+        }
+        public Dictionary<Guid?,string> GetEntityListFromEntityDefination(string entity)
+        {
+            return (from end in context.EntityDefinations
+                    join en in context.Entities on end.Id equals en.EntityDefinationId
+                    select new 
+                    {
+                        ControlId = en.ControlId,
+                        ObjectId = en.ObjectId,
+                        Value = en.Value
+                    }).ToDictionary(x=>x.ControlId,x=>x.Value);
+                   
         }
 
-        public void AddStudent(Student st)
-        {
-            context.Students.Add(st);
-            context.SaveChangesAsync();
-        }
     }
 }

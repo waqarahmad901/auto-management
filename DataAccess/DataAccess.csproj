@@ -65,6 +65,12 @@
       <DependentUpon>AutoManagement.edmx</DependentUpon>
     </Compile>
     <Compile Include="AutoManagementContext.cs" />
+    <Compile Include="Entity.cs">
+      <DependentUpon>AutoManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefination.cs">
+      <DependentUpon>AutoManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="IAutoManagementContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs">
