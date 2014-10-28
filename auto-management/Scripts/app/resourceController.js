@@ -5,7 +5,7 @@
             $scope.apiModels = {};
             var getResourse = {};
             var entityName = "StudentReg";
-            var objectId = "empty";
+            var objectId = "4f55de17-9357-4c16-b7b3-b30590824274";
 
             $scope.openEntity = function () {
                 $http.get("/api/Resource/" + entityName + "/" + objectId).success(function (data, status, headers, config) {
