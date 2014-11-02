@@ -30,14 +30,14 @@
         <id>7bbd9f55-3571-4cde-8ca0-243bf6204fe9</id>
         <values></values>
       </input>
-       <!--<input>
+      <input>
         <type>textbox</type>
         <name>txtPhoneNumber</name>
         <label>Phone Number</label>
-        <id></id>
+        <id>c80d37d5-7796-4c11-8ef8-f1bd5af99d9a</id>
         <values></values>
       </input>
-      <input>
+      <!-- <input>
         <type>radio</type>
         <name>rdAbc</name>
         <label>Gender</label>
@@ -62,7 +62,12 @@
     </control>
   </form>
   <view>
-    <header>9bc344da-1d01-4437-a9f1-63fa05b476e3:First Name,435d5912-8a61-4f95-b930-ceedf68087df:Last Name,7bbd9f55-3571-4cde-8ca0-243bf6204fe9:Email Address</header>
+    <header>
+      9bc344da-1d01-4437-a9f1-63fa05b476e3:my First Name,
+      435d5912-8a61-4f95-b930-ceedf68087df:my Last Name,
+      7bbd9f55-3571-4cde-8ca0-243bf6204fe9:my Email Address,
+      c80d37d5-7796-4c11-8ef8-f1bd5af99d9a:my Phone Number
+    </header>
    
   </view>
 </entity>

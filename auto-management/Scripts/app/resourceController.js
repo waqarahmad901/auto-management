@@ -5,20 +5,27 @@
             $scope.apiModels = {};
             var getResourse = {};
             var entityName = "StudentReg";
-            var objectId = "4f55de17-9357-4c16-b7b3-b30590824274";
-            $http.get("/api/Resource/GetEntityData/" + entityName + "/" + objectId).success(function (data, status, headers, config) {
+            
+            $http.get("/api/Resource/GetEntityData/" + entityName).success(function (data, status, headers, config) {
+                var headers = [];
+                for (var i = 0; i < data.headers.length; i++) {
+                    var obj = { "title": data.headers[i] };
+                    headers.push(obj);
+                }
+                var obj = {
+                        "title": "<a style='text-align:center' href=\"#\" data-toggle=\"modal\" data-target=\"#abc\" ng-click=\"openEntity('empty')\">Add</a>",
+                        sorting: false,
+                        "class" : "center"
+                }
+                headers.push(obj);
                var $table = $('#example').dataTable({
-                    "data": data,
-                    "columns": [
-                        { "title": "Engine" },
-                        { "title": "Browser" },
-                        { "title": "Platform" },
-                        { "title": "" }
-
-                    ]
+                   "data": data.lists,
+                   "paging": false,
+                   "columns": headers
+                      
                 });
                $compile($table)($scope);
-               // $scope.$apply();
+               
             });
             $scope.openEntity = function (objectID) {
                 $http.get("/api/Resource/Get/" + entityName + "/" + objectID).success(function (data, status, headers, config) {
@@ -39,10 +46,13 @@
             $scope.saveEntity = function () {
                 $http.post("/api/Resource", $scope.apiModels).success(function (data, status, headers, config) {
                     $("#abc").modal("hide");
+                   
                 }).error(function (data, status, headers, config) {
                     $scope.Error = "Oops... something went wrong";
                     $scope.working = false;
                 });
+
+
 
             }
         }]);

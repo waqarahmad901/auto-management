@@ -24,7 +24,7 @@ namespace auto_management.Controllers
         }
         // GET api/resource
 
-        public IHttpActionResult GetEntityData(string formName, string objectId)
+        public IHttpActionResult GetEntityData(string formName)
         {
             var entityDefination = context.GetEntityDefination(formName);
             XmlDocument doc = new XmlDocument();
@@ -45,8 +45,11 @@ namespace auto_management.Controllers
             }
 
             var finalData = MapEntitesWithHeader(entites, headerValues);
+            DataTableModel model = new DataTableModel();
+            model.Lists = finalData;
+            model.Headers = headerValues.Select(x => x.Value).ToArray();
 
-            return this.Ok(finalData);
+            return this.Ok(model);
 
 
         }
@@ -63,7 +66,9 @@ namespace auto_management.Controllers
                     var aa = item.KeyValue.Where(x => x.Key == header.Key).FirstOrDefault().Value;
                     array.Add(aa);
                 }
-                string editLink = "<button class=\"btn btn-default col-lg-12\" data-toggle=\"modal\" data-target=\"#abc\" ng-click=\"openEntity('"+item.ObjectId+"')\">Edit Student</button>";
+                //string editLink = "<button class=\"btn btn-default col-lg-12\" data-toggle=\"modal\" data-target=\"#abc\" ng-click=\"openEntity('"+item.ObjectId+"')\">Edit Student</button>";
+                string editLink = "<a href=\"#\" data-toggle=\"modal\" data-target=\"#abc\" ng-click=\"openEntity('" + item.ObjectId + "')\">Edit</a>";
+
                 array.Add(editLink);
                 list.Add(array);
 
@@ -156,7 +161,12 @@ namespace auto_management.Controllers
         }
     }
 
-   
+   public class DataTableModel
+   {
+       public DataTableModel() { Lists = new List<List<string>>(); }
+       public string[] Headers{get;set;}
+       public List<List<string>> Lists{get;set;}
+   }
 
    
 
