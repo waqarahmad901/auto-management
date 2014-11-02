@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,8 @@ namespace DataAccess
                                 select en;
             context.Entities.RemoveRange(deleteEntites);
 
+            //context.Database.ExecuteSqlCommandAsync("DELETE * FROM Entity WHERE FormId = '" + formId + "' AND ObjectId = '" + objectId + "'");
+
             foreach (var item in entites.Where(x => x.Key != "formId" && x.Key != "objectId" && x.Key != "entityDefinationId"))
             {
                 Entity oEntity = new Entity();
@@ -51,6 +54,28 @@ namespace DataAccess
                 context.Entities.Add(oEntity);
             }
             context.SaveChangesAsync();
+        }
+
+        public List<EntityModel> GetEntitiesByFormId(Guid formId)
+        {
+            var models = context.Entities.Where(x => x.FormId == formId)
+                          .Select(x => new 
+                          {
+                             FormId = (Guid)x.FormId,
+                              ObjectId = (Guid) x.ObjectId,
+                              ControlId = x.ControlId,
+                              Value = x.Value
+                          }).ToList();
+            var entites = models.GroupBy(x => x.ObjectId)
+                .Select(x => 
+                    new EntityModel { 
+                        ObjectId = x.FirstOrDefault().ObjectId,
+                        FormId = x.FirstOrDefault().FormId, 
+                        KeyValue = x.ToDictionary(y => (Guid)y.ControlId, y => y.Value) 
+                    }).ToList();
+            return entites;
+
+
         }
 
     }

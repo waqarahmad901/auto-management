@@ -1,14 +1,27 @@
 ﻿angular
 .module('myApp', [])
-    .controller('ResourceController',['$scope', '$http',
-        function ($scope, $http) {
+    .controller('ResourceController',['$scope', '$http','$compile',
+        function ($scope, $http,$compile) {
             $scope.apiModels = {};
             var getResourse = {};
             var entityName = "StudentReg";
             var objectId = "4f55de17-9357-4c16-b7b3-b30590824274";
+            $http.get("/api/Resource/GetEntityData/" + entityName + "/" + objectId).success(function (data, status, headers, config) {
+               var $table = $('#example').dataTable({
+                    "data": data,
+                    "columns": [
+                        { "title": "Engine" },
+                        { "title": "Browser" },
+                        { "title": "Platform" },
+                        { "title": "" }
 
-            $scope.openEntity = function () {
-                $http.get("/api/Resource/" + entityName + "/" + objectId).success(function (data, status, headers, config) {
+                    ]
+                });
+               $compile($table)($scope);
+               // $scope.$apply();
+            });
+            $scope.openEntity = function (objectID) {
+                $http.get("/api/Resource/Get/" + entityName + "/" + objectID).success(function (data, status, headers, config) {
                     $.each(data.controlModelList, function (i, entity) {
                         $scope.apiModels[entity.id] = entity.value;
                     })

@@ -24,12 +24,52 @@ namespace auto_management.Controllers
         }
         // GET api/resource
 
-        //public IHttpActionResult GetEntityDefination(string formName)
-        //{
+        public IHttpActionResult GetEntityData(string formName, string objectId)
+        {
+            var entityDefination = context.GetEntityDefination(formName);
+            XmlDocument doc = new XmlDocument();
+            doc.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/Resources/" + entityDefination.FirstOrDefault().Value));
+            EntityDefinationModel entity = new EntityDefinationModel();
+
+            XmlNode entityNode = doc.DocumentElement;
+            Guid identityValue = Guid.Parse(entityNode.SelectSingleNode("identity").InnerText);
+
+            List<EntityModel> entites = context.GetEntitiesByFormId(identityValue);
+
+            string[] headers = entityNode.SelectSingleNode("view/header").InnerText.Split(',');
+            Dictionary<Guid, string> headerValues = new Dictionary<Guid, string>();
+            foreach (var item in headers)
+            {
+                string[] value = item.Split(':');
+                headerValues.Add(Guid.Parse(value[0]), value[1]);
+            }
+
+            var finalData = MapEntitesWithHeader(entites, headerValues);
+
+            return this.Ok(finalData);
 
 
+        }
 
-        //}
+        private List<List<string>> MapEntitesWithHeader(List<EntityModel> entites, Dictionary<Guid, string> headerValues)
+        {
+            List<List<string>> list = new List<List<string>>();
+            //list.Add( headerValues.Select(x => x.Value).ToList());
+            foreach (var item in entites)
+            {
+                List<string> array = new List<string>();
+                foreach (var header in headerValues)
+                {
+                    var aa = item.KeyValue.Where(x => x.Key == header.Key).FirstOrDefault().Value;
+                    array.Add(aa);
+                }
+                string editLink = "<button class=\"btn btn-default col-lg-12\" data-toggle=\"modal\" data-target=\"#abc\" ng-click=\"openEntity('"+item.ObjectId+"')\">Edit Student</button>";
+                array.Add(editLink);
+                list.Add(array);
+
+            }
+            return list;
+        }
 
 
         public IHttpActionResult Get(string formName, string objectId)

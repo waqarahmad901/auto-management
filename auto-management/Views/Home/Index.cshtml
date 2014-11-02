@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Play";
 }
+
 <div ng-controller="ResourceController">
     <div id="bodyContainer">
         <div>
@@ -8,14 +9,14 @@
             <div class="row">
                 <div class="col-sm-8 form-horizontal">
                     <div style="margin-top:10px"></div>
-
+                    <table cellpadding="0" cellspacing="0" border="0" class="display" id="example"></table>
                 </div>
-                <span class="item-delete-button">
-                    <button class="btn btn-default col-lg-3 col-lg-offset-3" data-toggle="modal" data-target="#abc" ng-click="openEntity()">
-                        Add New Student
-                    </button>
-                </span>
-            </div>
+                    <span class="item-delete-button">
+                        <button class="btn btn-default col-lg-3 col-lg-offset-3" data-toggle="modal" data-target="#abc" ng-click="openEntity('empty')">
+                            Add New Student
+                        </button>
+                    </span>
+                </div>
         </div>
         <!-- Modal Button-->
 

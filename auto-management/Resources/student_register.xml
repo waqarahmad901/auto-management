@@ -62,7 +62,7 @@
     </control>
   </form>
   <view>
-    <header></header>
-    <values></values>
+    <header>9bc344da-1d01-4437-a9f1-63fa05b476e3:First Name,435d5912-8a61-4f95-b930-ceedf68087df:Last Name,7bbd9f55-3571-4cde-8ca0-243bf6204fe9:Email Address</header>
+   
   </view>
 </entity>

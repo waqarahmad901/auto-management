@@ -14,5 +14,7 @@ namespace Domain.Models
         public Guid FormId { get; set; }
         public Guid ControlId { get; set; }
         public string Value { get; set; }
+
+        public Dictionary<Guid, string> KeyValue { get; set; }
     }
 }
