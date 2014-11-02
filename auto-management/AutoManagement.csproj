@@ -262,6 +262,10 @@
       <Project>{0d58a2ec-10d0-427a-b689-dcef0862b977}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{dbcfe915-82a9-40ac-ad15-692b27e0f0ad}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,14 @@ namespace auto_management.Controllers
         }
         // GET api/resource
 
+        //public IHttpActionResult GetEntityDefination(string formName)
+        //{
+
+
+
+        //}
+
+
         public IHttpActionResult Get(string formName, string objectId)
         {
             Dictionary<Guid?,string> entityList = null;
@@ -34,7 +43,7 @@ namespace auto_management.Controllers
 
             XmlDocument doc = new XmlDocument();
             doc.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/Resources/" + entityDefination.FirstOrDefault().Value));
-            EntityDef entity = new EntityDef();
+            EntityDefinationModel entity = new EntityDefinationModel();
 
             XmlNodeList controlNodes = doc.DocumentElement.SelectNodes("form/control/input");
 
@@ -107,36 +116,11 @@ namespace auto_management.Controllers
         }
     }
 
-    public class EntityDef
-    {
-        public EntityDef()
-        {
-            ControlModelList = new List<ControlsModel>();
-        }
-        public int EntityDefinationId { get; set; }
-        public bool isEdit { get; set; }
-        public string Title { get; set; }
-        public Guid FormId { get; set; }
-        public Guid ObjectId { get; set; }
-        public List<ControlsModel> ControlModelList { get; set; }
-    }
+   
 
-    public class View
-    {
-        public string[] Headers { get; set; }
-        public Guid[] HeadersIdentity { get; set; }
-    }
+   
 
-    public class ControlsModel
-    {
-        public string Type { get; set; }
-        public string Name { get; set; }
-        public string Label { get; set; }
-        public string[] Values { get; set; }
-        public string value { get; set; }
-
-        public Guid Id { get; set; }
-    }
+  
 
 
 }
