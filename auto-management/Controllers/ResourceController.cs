@@ -123,7 +123,18 @@ namespace auto_management.Controllers
                 if (!string.IsNullOrEmpty(objectId) && objectId != "empty")
                 {
                     var entityValue = entityList.FirstOrDefault(x => x.Key == control.Id);
-                    control.value = entityValue.Value;
+                    if (entityValue.Value != null)
+                        control.value = entityValue.Value;
+                    else
+                    {
+                        if (node.SelectSingleNode("selectedvalues") != null)
+                            control.value = node.SelectSingleNode("selectedvalues").InnerText;
+                    }
+                }
+                else
+                {
+                    if (node.SelectSingleNode("selectedvalues") != null)
+                        control.value = node.SelectSingleNode("selectedvalues").InnerText;
                 }
                 controls.Add(control);
             }

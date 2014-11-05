@@ -5,7 +5,7 @@
 <div ng-controller="ResourceController">
     <div id="bodyContainer">
         <div>
-            @*<div>{{Error}}</div>*@
+            <div>{{Error}}</div>
             <div class="row">
                 <div class="col-sm-8 form-horizontal">
                     <div style="margin-top:10px"></div>
@@ -36,23 +36,21 @@
                             <input type="{{parameter.type}}" class="form-control" name="{{parameter.name}}" id="{{parameter.name}}" ng-model="apiModels[parameter.id]" placeholder="{{parameter.label}}">
                         </div>
                         <div class="col-sm-9" ng-show="parameter.type === 'dropdown'">
-                            <select class="form-control" name="{{parameter.name}}" id="{{parameter.name}}" ng-model="apiModels[parameter.id]" placeholder="{{parameter.label}}">
-                                <option ng-repeat="value in parameter.values" value="{{value}}">{{value}}</option>
+                            <select class="form-control" name="{{parameter.name}}" id="{{parameter.name}}" ng-model="apiModels[parameter.id]" placeholder="{{parameter.label}}"
+                                    ng-options="value as value for value in parameter.values">
                             </select>
                         </div>
                         <div class="col-sm-9" ng-show="parameter.type === 'checkbox'">
-                            <div ng-repeat="value in parameter.values">
-                                <label class="checkbox-inline">
-                                    <input type="{{parameter.type}}" id="{{value}}" ng-model="apiModels[value]" value="{{value}}">{{value}}
+                           
+                                <label class="checkbox-inline" ng-repeat="value in parameter.values">
+                                    <input type="checkbox" id="{{value}}" ng-checked="apiModels[parameter.id].indexOf(value) > -1" ng-click="toggleSelection(parameter.id,value)">{{value}}
                                 </label>
-                            </div>
+                           
                         </div>
                         <div class="col-sm-9" ng-show="parameter.type === 'radio'">
-                            <div ng-repeat="value in parameter.values">
-                                <label class="radio-inline">
+                                <label class="radio-inline" ng-repeat="value in parameter.values">
                                     <input type="{{parameter.type}}" id="{{value}}" name="{{parameter.name}}" ng-model="apiModels[parameter.id]" value="{{value}}">{{value}}
                                 </label>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -37,28 +37,38 @@
         <id>c80d37d5-7796-4c11-8ef8-f1bd5af99d9a</id>
         <values></values>
       </input>
-      <!-- <input>
+       <input>
         <type>radio</type>
         <name>rdAbc</name>
         <label>Gender</label>
-        <id></id>
+        <id>e17d8be3-a2c9-4cde-882b-ec2bb6f71836</id>
         <values>Male,Female,Other</values>
+         <selectedvalues>Female</selectedvalues>
       </input>
       <input>
         <type>dropdown</type>
         <name>drpAbc</name>
         <label>Age</label>
-        <id></id>
+        <id>d131a3cd-3c6a-41d8-a6c7-1cf55c54deeb</id>
         <values>Select,40,50,60</values>
+      <selectedvalues>50</selectedvalues>
       </input>
       <input>
         <type>checkbox</type>
         <name>chkAbc</name>
         <label>Education</label>
-        <id></id>
+        <id>b8376084-b5bf-4e10-96f7-e562f12e0015</id>
         <values>Primary,High,Bachalor,Master</values>
-        <selectedvalues></selectedvalues>
-      </input>-->
+        <selectedvalues>Primary,High</selectedvalues>
+      </input>
+          <input>
+        <type>checkbox</type>
+        <name>chkwwc</name>
+        <label>ABC</label>
+        <id>18ab863c-173e-46f3-9009-5917f7155133</id>
+        <values>AA,BB,CC,DD</values>
+        <selectedvalues>AA</selectedvalues>
+      </input>
     </control>
   </form>
   <view>
@@ -66,7 +76,9 @@
       9bc344da-1d01-4437-a9f1-63fa05b476e3:my First Name,
       435d5912-8a61-4f95-b930-ceedf68087df:my Last Name,
       7bbd9f55-3571-4cde-8ca0-243bf6204fe9:my Email Address,
-      c80d37d5-7796-4c11-8ef8-f1bd5af99d9a:my Phone Number
+      c80d37d5-7796-4c11-8ef8-f1bd5af99d9a:my Phone Number,
+      e17d8be3-a2c9-4cde-882b-ec2bb6f71836:Gender,
+      b8376084-b5bf-4e10-96f7-e562f12e0015:Education
     </header>
    
   </view>

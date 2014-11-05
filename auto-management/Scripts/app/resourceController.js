@@ -10,7 +10,10 @@
             $scope.openEntity = function (objectID) {
                 $http.get("/api/Resource/Get/" + entityName + "/" + objectID).success(function (data, status, headers, config) {
                     $.each(data.controlModelList, function (i, entity) {
-                        $scope.apiModels[entity.id] = entity.value;
+                        if (entity.type == "checkbox")
+                            $scope.apiModels[entity.id] = entity.value.split(",");
+                        else
+                            $scope.apiModels[entity.id] = entity.value;
                     })
                     $scope.apiModels["formId"] = data.formId;
                     $scope.apiModels["entityDefinationId"] = data.entityDefinationId;
@@ -24,7 +27,14 @@
             }
 
             $scope.saveEntity = function () {
-                $http.post("/api/Resource", $scope.apiModels).success(function (data, status, headers, config) {
+                var tempArray = {};
+                $.each($scope.apiModels, function (i, entity) {
+                    if ($scope.apiModels[i] instanceof Array)
+                        tempArray[i] = $scope.apiModels[i].join();
+                    else
+                        tempArray[i] = $scope.apiModels[i]
+                })
+                $http.post("/api/Resource", tempArray).success(function (data, status, headers, config) {
                     $("#abc").modal("hide");
                     drawTable(entityName, $http, $compile, $scope);
                 }).error(function (data, status, headers, config) {
@@ -32,6 +42,18 @@
                     $scope.working = false;
                 });
 
+            }
+
+            $scope.toggleSelection = function (checkboxId, value) {
+                if ($scope.apiModels[checkboxId] == "")
+                    $scope.apiModels[checkboxId] = [];
+                var idx = $scope.apiModels[checkboxId].indexOf(value);
+                if (idx > -1) {
+                    $scope.apiModels[checkboxId].splice(idx, 1);
+                }
+                else {
+                    $scope.apiModels[checkboxId].push(value);
+                }
             }
         }]);
 
