@@ -28,7 +28,7 @@ namespace DataAccess
                         ObjectId = en.ObjectId,
                         Value = en.Value
                     }).ToDictionary(x=>x.ControlId,x=>x.Value);
-                   
+                    
         }
 
         public void AddEntites(Dictionary<string, string> entites)
